@@ -36,7 +36,6 @@ namespace iPizzaRestApi {
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

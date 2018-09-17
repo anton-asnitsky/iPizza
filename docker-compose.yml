@@ -2,8 +2,7 @@ version: '2'
 services:
   api:
     ports:
-      - "80:50578"
-      - "443:44365"
+      - "8080:80"
     build: 
       context: .
-      dockerfile: iPizzaRestApi/dockerfile
+      dockerfile: iPizzaRestApi/Dockerfile
