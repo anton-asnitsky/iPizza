@@ -13,6 +13,7 @@
     "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
     "babel-loader": "7.1.5",
@@ -32,9 +33,9 @@
     "react-dom": "16.5.1",
     "react-modal": "3.5.1",
     "react-redux": "5.0.7",
-    "redux-thunk": "2.2.0",
     "react-router-dom": "4.3.1",
     "redux": "4.0.0",
+    "redux-thunk": "2.2.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
     "uuid": "^3.3.2",

@@ -6,3 +6,15 @@ services:
     build: 
       context: .
       dockerfile: iPizzaRestApi/Dockerfile
+  web:
+    ports:
+      - "3030:3030"
+    build:
+      context: .
+      dockerfile: iPizzaWeb/Dockerfile
+  admin:
+    ports:
+      - "3031:3031"
+    build:
+      context: .
+      dockerfile: iPizzaAdmin/Dockerfile

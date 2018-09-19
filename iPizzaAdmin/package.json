@@ -1,5 +1,5 @@
 {
-  "name": "ipizza-admin-app",
+  "name": "ipizza-admin-client",
   "version": "1.0.0",
   "main": "index.html",
   "author": "Anton Asnitsky",
@@ -7,12 +7,13 @@
   "scripts": {
     "build": "webpack",
     "build:prod": "webpack -p --env production",
-    "dev-server": "webpack-dev-server",
+    "dev-server": "webpack-dev-server --env.PORT=8081 --env.API_URL=http://localhost:8080",
     "test": "jest --watch --config=jest.config.json",
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
     "babel-loader": "7.1.5",
@@ -34,10 +35,13 @@
     "react-redux": "5.0.7",
     "react-router-dom": "4.3.1",
     "redux": "4.0.0",
+    "redux-thunk": "2.2.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
+    "uuid": "^3.3.2",
     "validator": "10.7.1",
-    "webpack": "4.19.0"
+    "webpack": "3.1.0",
+    "webpack-cli": "3.1.0"
   },
   "devDependencies": {
     "enzyme": "3.6.0",
@@ -46,6 +50,6 @@
     "extract-text-webpack-plugin": "3.0.2",
     "jest": "23.6.0",
     "react-test-renderer": "16.5.1",
-    "webpack-dev-server": "3.1.8"
+    "webpack-dev-server": "2.5.1"
   }
 }
