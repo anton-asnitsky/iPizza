@@ -5,6 +5,8 @@ import { apiServerUrl } from '../config/config';
 import { updateOrdersList } from '../actions/order';
 import axios from 'axios';
 
+import '../styles/orders-list.scss';
+
 /**
  * Stateful component to present list of orders
  */
@@ -51,15 +53,19 @@ class OrdersList extends React.Component{
 
     render(){
         return (
-            <section>
-                <h2>Current orders list</h2>
-                <ul>
+            <section  className="orders-list-widget">
+                <h2  className="title">Current orders list</h2>
+                <ul  className="orders-list">
                     {
                         this.state.orders.length === 0 ? (
-                            <li>No orders found</li>
+                            <li  className="list-item">No orders found</li>
                         ) : (
                             this.state.orders.map((order) => {
-                                return (<OrdersListItem key={order.id} {...order} />);
+                                return (
+                                    <li  className="list-item"  key={order.id}>
+                                        <OrdersListItem key={order.id} {...order} />
+                                    </li>
+                                );
                             })
                         )
                     }

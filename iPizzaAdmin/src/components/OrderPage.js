@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { startUpdateOrderStatus } from '../actions/order';
 import {StatusTypes, ToppingTypes, PizzaTypes} from '../enums/order';
 
+import '../styles/order-page.scss';
+
 class OrderPage extends React.Component{
     constructor(props){
         super(props);
@@ -44,11 +46,12 @@ class OrderPage extends React.Component{
 
     render(){
         return (
-            <section>
-                <p>Type: {PizzaTypes[this.state.pizzaType]}</p>
-                <p>Topping: {ToppingTypes[this.state.toppingType]}</p>
-                <p>Current status: 
-                    <select
+            <section className="order-widget">
+                <p className="caption">Type: <span className="data">{PizzaTypes[this.state.pizzaType]}</span></p>
+                <p  className="caption">Topping: <span className="data">{ToppingTypes[this.state.toppingType]}</span></p>
+                <p  className="caption"><span className="data">Current status: </span>
+                    <select 
+                        className="status-list"
                         value={this.state.status} 
                         onChange={this.handleOrderStatusChange}
                     >

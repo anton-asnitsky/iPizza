@@ -12,14 +12,14 @@ import {
 
 const AppRouter = () => (
     <BrowserRouter>
-        <div>
+        <section className="main-container">
             <Header />
             <Switch>
                 <Route path="/" component={MainPage} exact={true} />
                 <Route path="/order/:id" component={OrderPage} />
                 <Route component={NotFoundPage} />
             </Switch>
-        </div>
+        </section>
 
     </BrowserRouter>
 );

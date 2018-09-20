@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import '../styles/header.scss';
 
 const Header = () => (
-    <header className="main-header">
+    <header >
         <h1 className="title">iPizza</h1>
         <nav className="nav-container">
             <NavLink to="/" activeClassName="is-active" exact={true}>Main page</NavLink>

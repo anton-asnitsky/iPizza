@@ -1,0 +1,12 @@
+@import 'base/settings';
+
+.order-widget{
+    .caption{
+        margin-top: 10px;
+        color: $off-white;
+        text-align:  left;
+        .data{
+            color: white;
+        }
+    }
+}

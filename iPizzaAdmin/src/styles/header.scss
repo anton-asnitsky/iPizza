@@ -1,0 +1,27 @@
+@import     './base/settings';
+
+.main-header{
+    width: 55rem;
+    background: $off-black;
+    margin-bottom: $m-size;
+    padding: $m-size 0;
+    color: white;
+    .title{
+        text-align: center;
+    }
+    .nav-container{
+        width: 100%;
+        margin: 15px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        a{
+            color: $off-white;
+            margin: 5px 10px;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
