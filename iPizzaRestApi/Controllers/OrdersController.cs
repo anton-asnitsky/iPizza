@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using iPizzaRestApi.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,6 +14,7 @@ namespace iPizzaRestApi.Controllers {
     /// Contains all REST CRUD methods
     /// </summary>
     [Route( "api/orders" )]
+    [EnableCors( "AllowAnyOrigin" )]
     public class OrdersController :Controller {
         private OrderContext _context;
 
@@ -44,7 +46,7 @@ namespace iPizzaRestApi.Controllers {
         /// <param name="id"></param>
         /// <returns>Paerticular order or throws NotFound exception of no prders found.</returns>
         [HttpGet( "{id}", Name = "GetOrder" )]
-        public ActionResult<Order> GetById( long id ) {
+        public ActionResult<Order> GetById( int id ) {
             var item = _context.Orders.Find( id );
             if ( item == null ) {
                 return NotFound();
@@ -60,11 +62,11 @@ namespace iPizzaRestApi.Controllers {
         /// <param name="order"></param>
         /// <returns>Redirect to /api/order/{newly created order id} route</returns>
         [HttpPost]
-        public IActionResult Create( Order order ) {
+        public IActionResult Create( [FromBody]Order order ) {
             _context.Orders.Add( order );
             _context.SaveChanges();
 
-            return CreatedAtRoute( "GetOrder", new { id = order.Id }, order );
+            return CreatedAtRoute( "GetOrder", new { id = order.id }, order );
         }
 
         /// <summary>
@@ -76,13 +78,13 @@ namespace iPizzaRestApi.Controllers {
         /// <param name="update"></param>
         /// <returns>No content returned</returns>
         [HttpPut( "{id}" )]
-        public IActionResult Update( long id, Order update ) {
+        public IActionResult Update( int id, [FromBody]Order update ) {
             var order = _context.Orders.Find( id );
             if ( order == null ) {
                 return NotFound();
             }
 
-            order.Status = update.Status;
+            order.status = update.status;
 
             _context.Orders.Update( order );
             _context.SaveChanges();
@@ -97,15 +99,19 @@ namespace iPizzaRestApi.Controllers {
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete( "{id}" )]
-        public IActionResult Delete( long id ) {
+        public IActionResult Delete( int id ) {
             var order = _context.Orders.Find( id );
             if ( order == null ) {
                 return NotFound();
             }
 
-            order.Status = 0;
-            _context.Orders.Update( order );
+            _context.Orders.Remove( order );
             _context.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult Options() {
             return NoContent();
         }
     }

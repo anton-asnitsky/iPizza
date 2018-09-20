@@ -10,5 +10,5 @@ app.get('*', (request, response) => {
 });
 
 app.listen(port, () => {
-    console.log('Admin Server is up');
+    console.log(`Admin Server is up. Serving on http://localhost:${port}`);
 });

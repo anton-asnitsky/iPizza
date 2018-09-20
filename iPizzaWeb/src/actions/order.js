@@ -1,11 +1,14 @@
 import axios from 'axios';
+import { apiServerUrl } from '../config/config';
+
+
 
 /**
  * Action generator for new order creation
  * @param {*} order 
  */
 export const makeOrder = (order) => ({
-    type: MAKE_ORDER,
+    type: 'MAKE_ORDER',
     order
 });
 
@@ -16,19 +19,25 @@ export const makeOrder = (order) => ({
 export const startMakeOrder = (orderData = {}) => {
     return (dispatch) => {
       const {
-        CustomerId = 0,
-        PizzaType = 0,
-        ToppingType = 0,
-        Status = 1
+        customerId = 0,
+        pizzaType = 0,
+        toppingType = 0,
+        status = 1
       } = orderData;
-      const order = {  CustomerId, PizzaType, ToppingType, Status };
-  
+      const order = {  customerId, pizzaType, toppingType, status };
       axios({
         method: 'post',
-        url: 'http://localhost:8080/api/orders',
+        url: `${apiServerUrl}/api/orders`,
         data: order
       }).then((response) => {
-          dispatch(makeOrder({Id, CustomerId, PizzaType, ToppingType, Status}));
+          let order = {
+            id: response.data.id, 
+            customerId: response.data.customerId, 
+            pizzaType: response.data.pizzaType, 
+            toppingType: response.data.toppingType, 
+            status: response.data.status
+          };
+          dispatch(makeOrder(order));
       });
     };
   };
@@ -52,17 +61,17 @@ export const updateOrderStatus = (id, updates) => ({
 export const startUpdateOrderStatus = (orderData = {}) => {
     return (dispatch) => {
       const {
-        Id,
-        CustomerId = 0,
-        PizzaType = 0,
-        ToppingType = 0,
-        Status = 1
+        id,
+        customerId = 0,
+        pizzaType = 0,
+        toppingType = 0,
+        status = 1
       } = orderData;
-      const order = {  Id, CustomerId, PizzaType, ToppingType, Status };
+      const order = {  id, customerId, pizzaType, toppingType, status };
   
       axios({
         method: 'update',
-        url: `http://localhost:8080/api/orders/${order.Id}`,
+        url: `${apiServerUrl}/api/orders/${order.Id}`,
         data: order
       }).then((response) => {
           dispatch(updateOrderStatus({Id, order}));
@@ -88,8 +97,7 @@ export const startCloseOrder = (id) => {
  
       axios({
         method: 'delete',
-        url: `http://localhost:8080/api/orders/${id}`,
-        data: order
+        url: `${apiServerUrl}/api/orders/${id}`
       }).then((response) => {
           dispatch(closeOrder(id));
       });

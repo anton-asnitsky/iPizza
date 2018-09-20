@@ -8,23 +8,23 @@ class CreateOrder extends React.Component {
         super(props);
 
         this.state = {
-            CustomerId: props.users.userId,
-            PizzaType: PizzaType.NONE,
-            ToppingType: ToppingType.NONE,
-            Status: OrderStatus.NEW,
+            customerId: props.users.userId,
+            pizzaType: PizzaType.NONE,
+            toppingType: ToppingType.NONE,
+            status: OrderStatus.NEW,
             userLoggedIn: props.users.loggedIn,
             error: !props.users.loggedIn ? 'First you need to login' : ''
        }
     };
 
     onPizzaTypeChange = (e) => {
-        const PizzaType = parseInt(e.target.value);
-        this.setState(() => ({ PizzaType }));
+        const pizzaType = parseInt(e.target.value);
+        this.setState(() => ({ pizzaType }));
     };
 
     onToppingsChange = (e) => {
-        const ToppingType = parseInt(e.target.value);
-        this.setState(() => ({ ToppingType }));
+        const toppingType = parseInt(e.target.value);
+        this.setState(() => ({ toppingType }));
     };
 
     onSubmit = (e) => {
@@ -36,14 +36,14 @@ class CreateOrder extends React.Component {
             return;
         }
 
-        if(this.state.PizzaType === PizzaType.NONE) {
+        if(this.state.pizzaType === PizzaType.NONE) {
             this.setState(() => ({
                 error: 'Please choose pizza type'
             }));
             return;
         } 
         
-        if(this.state.ToppingType === ToppingType.NONE) {
+        if(this.state.toppingType === ToppingType.NONE) {
             this.setState(() => ({
                 error: 'Please choose pizza type'
             }));
@@ -54,10 +54,10 @@ class CreateOrder extends React.Component {
         }));
         
         this.props.startMakeOrder({
-            CustomerId:  this.state.userId,
-            PizzaType: this.state.PizzaType,
-            ToppingType: this.state.ToppingType,
-            Status: this.state.Status,
+            customerId:  this.state.customerId,
+            pizzaType: this.state.pizzaType,
+            toppingType: this.state.toppingType,
+            status: this.state.status,
         });
         this.props.history.push('/');
     };

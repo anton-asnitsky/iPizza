@@ -1,9 +1,9 @@
 import React from 'react';
 import OrdersList from './OrdersList';
 
-const MainPage = (props) => (
+const MainPage = () => (
     <section>
-        <OrdersList history={props.history} />
+        <OrdersList />
     </section>
 );
 

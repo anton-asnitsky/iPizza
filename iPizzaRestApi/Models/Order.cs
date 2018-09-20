@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace iPizzaRestApi.Models {
     public class Order {
         [Key]
-        public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public int PizzaType { get; set; }
-        public int ToppingType { get; set; }
-        public int Status { get; set; }
+        public int id { get; set; }
+        public string customerId { get; set; }
+        public int pizzaType { get; set; }
+        public int toppingType { get; set; }
+        public int status { get; set; }
     }
 }

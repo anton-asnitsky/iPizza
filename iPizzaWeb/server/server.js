@@ -10,5 +10,5 @@ app.get('*', (request, response) => {
 });
 
 app.listen(port, () => {
-    console.log('WebClient Server is up');
+    console.log(`WebClient Server is up. Serving on http://localhost:${port}`);
 });

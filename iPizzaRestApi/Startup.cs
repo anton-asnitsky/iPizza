@@ -25,6 +25,17 @@ namespace iPizzaRestApi {
         public void ConfigureServices( IServiceCollection services ) {
             /** We could use here any type of database but  for simplicity we'll use in-memory db **/
             services.AddDbContext<OrderContext>( opt => opt.UseInMemoryDatabase( "Orders" ) );
+            services.AddCors( options =>
+            {
+                options.AddPolicy( "AllowAnyOrigin",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetPreflightMaxAge(TimeSpan.FromSeconds(2520))
+                    );
+            } );
+
             services.AddMvc().SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
         }
 
@@ -32,10 +43,9 @@ namespace iPizzaRestApi {
         public void Configure( IApplicationBuilder app, IHostingEnvironment env ) {
             if ( env.IsDevelopment() ) {
                 app.UseDeveloperExceptionPage();
-            } else {
-                app.UseHsts();
             }
 
+            app.UseCors( "AllowAnyOrigin" );
             app.UseMvc();
         }
     }
