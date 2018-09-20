@@ -2,6 +2,8 @@ import React from 'react';
 import { connect }      from 'react-redux';
 import { loginUser } from '../actions/users';
 
+import '../styles/login-page.scss';
+
 class LoginPage extends React.Component{
     constructor(props){
         super(props);
@@ -44,17 +46,19 @@ class LoginPage extends React.Component{
 
     render() {
         return (
-            <section>
+            <section className="login-widget">
                 {this.state.error !== '' && <p>{this.state.error}</p>}
                 <form
+                    className="login-form"
                     onSubmit={this.onSubmit}
                 >
                     <input 
+                        className="text-input"
                         type="text" 
                         placeholder="Username" 
                         onChange={this.onUserNameChange}
                     />
-                    <button>Log In</button>
+                    <button className="button">Log In</button>
                 </form>
             </section>
         );

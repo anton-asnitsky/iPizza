@@ -1,0 +1,20 @@
+@import     './base/settings';
+
+.login-widget{
+    width: 100%;
+    .login-form{
+        display: flex;
+        flex-direction: column;
+        padding: $m-size;
+
+        .text-input{
+            flex-grow: 1;
+            background: $dark-blue;
+            border: none;
+            border-bottom: .3rem solid darken($dark-blue, 10%);
+            margin: 0 0 $s-size 0;
+            color: $off-white;
+            padding: $s-size;
+        }
+    }
+}

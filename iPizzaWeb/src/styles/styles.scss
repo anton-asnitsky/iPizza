@@ -1,2 +1,11 @@
 @import     './base/settings';
 @import     './base/base';
+@import     './buttons.scss';
+
+body{
+    background-color: $off-black;
+    .main-container{
+        max-width: 60rem;
+        margin: 0 auto;
+    }
+}

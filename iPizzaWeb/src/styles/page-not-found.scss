@@ -1,0 +1,12 @@
+.page-not-found-widget{
+    color: yellow;
+    margin: 25px auto 0 auto;
+    width: 50%;
+    text-align: center;
+    a {
+        color: white;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

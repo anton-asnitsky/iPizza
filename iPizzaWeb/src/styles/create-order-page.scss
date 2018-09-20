@@ -1,0 +1,35 @@
+@import     './base/settings';
+
+.create-order-widget{
+    width: 55rem;
+    padding: 15px;
+
+    .error{
+        color: red;
+        font-weight: bold;
+        margin: 10px auto;
+    }
+
+    .order-form{
+        display: flex;
+        flex-direction: column;
+
+        .pizza-type{
+            width: 100%;
+            padding: 10px;
+            background: $dark-blue;
+            border: none;
+            border-bottom: .3rem solid darken($dark-blue, 10%);
+            color: $off-white;
+        }
+        .topping-type{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background: $dark-blue;
+            border: none;
+            border-bottom: .3rem solid darken($dark-blue, 10%);
+            color: $off-white;
+        }
+    }
+}

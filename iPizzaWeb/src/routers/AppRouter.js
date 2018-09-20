@@ -13,7 +13,7 @@ import {
 
 const AppRouter = () => (
     <BrowserRouter>
-        <div>
+        <section className="main-container">
             <Header />
             <Switch>
                 <Route path="/" component={MainPage} exact={true} />
@@ -21,7 +21,7 @@ const AppRouter = () => (
                 <Route path="/login" component={LoginPage} />
                 <Route component={NotFoundPage} />
             </Switch>
-        </div>
+        </section>
 
     </BrowserRouter>
 );

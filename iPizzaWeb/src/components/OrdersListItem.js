@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { OrderStatus } from '../enums/order';
 import { startCloseOrder } from '../actions/order';
 import { apiServerUrl } from '../config/config';
-
-
 import axios from 'axios';
+
+import '../styles/order-list-item.scss';
 
 const PizzaTypes = [
     'None', 
@@ -39,7 +39,6 @@ class OrdersListItem extends React.Component{
         super(props);
 
         this.interval = window.setInterval(this.checkOrderStatus, 10000);
-        console.log(props);
         this.state = {
             id: props.order.id, 
             customerId: props.order.customerId, 
@@ -72,14 +71,18 @@ class OrdersListItem extends React.Component{
 
     render(){
         return (
-            <section key={this.props.key}>
-                <p>Type: {PizzaTypes[this.state.pizzaType]}</p>
-                <p>Topping: {ToppingTypes[this.state.toppingType]}</p>
-                <p>Current status: {StatusTypes[this.state.status]}</p>
+            <section
+             key={this.props.key}
+             className="order-list-item"
+            >
+                <p className="caption">Type: <span className="data">{PizzaTypes[this.state.pizzaType]}</span></p>
+                <p className="caption">Topping: <span className="data">{ToppingTypes[this.state.toppingType]}</span></p>
+                <p className="caption">Current status: <span className="data">{StatusTypes[this.state.status]}</span></p>
                 {
                     this.state.status === OrderStatus.DELIEVERING 
                     && 
                     <button
+                        className="button"
                         onClick={this.handleCloseOrder}
                     >
                         I've got the pizza

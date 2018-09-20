@@ -2,6 +2,8 @@ import React from 'react';
 import { connect }      from 'react-redux';
 import OrdersListItem from './OrdersListItem';
 
+import '../styles/orders-list.scss';
+
 class OrdersList extends React.Component{
     constructor(props){
         super(props);
@@ -13,15 +15,19 @@ class OrdersList extends React.Component{
 
     render(){
         return(
-            <section>
-                <h2>Current orders list</h2>
-                <ul>
+            <section className="orders-list-widget">
+                <h2 className="title">Current orders list</h2>
+                <ul className="orders-list">
                     {
                         this.props.orders.length === 0 ? (
-                            <li>No orders found</li>
+                            <li className="list-item">No orders found</li>
                         ) : (
                             this.props.orders.map((order) => {
-                                return (<OrdersListItem key={order.id} {...order} history={this.props.history} />);
+                                return (
+                                    <li className="list-item" key={order.id}>
+                                        <OrdersListItem  {...order} history={this.props.history} />
+                                    </li>
+                                );
                             })
                         )
                     }

@@ -3,6 +3,8 @@ import { connect }      from 'react-redux';
 import { startMakeOrder } from '../actions/order';
 import { OrderStatus, PizzaType, ToppingType } from '../enums/order';
 
+import '../styles/create-order-page.scss';
+
 class CreateOrder extends React.Component {
     constructor(props){
         super(props);
@@ -64,10 +66,13 @@ class CreateOrder extends React.Component {
 
    render(){
        return (
-           <section>
-               {this.state.error !== '' && <p>{this.state.error}</p>}
-               <form onSubmit={this.onSubmit}>
+           <section className="create-order-widget">
+               {this.state.error !== '' && <p className="error">{this.state.error}</p>}
+               <form 
+                className="order-form"
+                onSubmit={this.onSubmit}>
                    <select
+                    className="pizza-type"
                     onChange={this.onPizzaTypeChange}
                    >
                     <option value={ PizzaType.NONE }>Select pizza type</option>
@@ -76,6 +81,7 @@ class CreateOrder extends React.Component {
                     <option value={ PizzaType.WHOLE }>Whole wheat flour</option>
                    </select>
                    <select
+                    className="topping-type"
                     onChange={this.onToppingsChange}
                    >
                     <option value={ ToppingType.NONE }>Choose toppings</option>
@@ -88,7 +94,11 @@ class CreateOrder extends React.Component {
                     <option value={ ToppingType.SOUCE }>Souce</option>
                     <option value={ ToppingType.PEPPER }>Hot pepper</option>
                    </select>
-                   <button>Make an order</button>
+                   <button
+                    className="button"
+                   >
+                        Make an order
+                    </button>
                </form>
            </section>
        );
